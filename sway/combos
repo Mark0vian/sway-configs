@@ -1,0 +1,8 @@
+# Key combos
+#
+set $type wlrctl keyboard type 
+
+bindsym o+i exec $type n
+bindsym s+u exec $type udo
+bindsym p+a exec $type acman
+bindsym y+e exec $type ear

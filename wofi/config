@@ -1,0 +1,33 @@
+stylesheet=/home/chris/.config/wofi/style.css
+# colors=/home/chris/.config/waybar/material.css
+# hide_scroll=true
+show=drun
+# height=85
+columns=1
+lines=13
+width=350
+term=alacritty
+location=center
+dynamic_lines=true
+allow_markup=true
+always_parse_args=true
+show_all=true
+print_command=true
+layer=overlay
+insensitive=true
+prompt=
+image_size=30
+content_align=center
+display_generic=true
+line_wrap=off
+valigh=center
+haligh=center
+orientation=vertical
+
+# Vi keybindings
+# key_forward=j
+# key_backward=k
+# key_submit=l
+# key_hide_search=q
+# key_pgup=Tabey_pgup=Tab
+# key_expand=Tab

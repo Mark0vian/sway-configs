@@ -1,0 +1,236 @@
+{
+  // "layer": "top", // Waybar at top layer
+  // "position": "top", // Waybar position (top|bottom|left|right)		
+  "height": 35, // Waybar height (to be removed for auto height)
+  // "width": // Waybar width
+  // Choose the order of the modules
+  "modules-center": ["custom/github", "custom/reddit", "custom/youtube", "custom/mail", "custom/arch", "sway/workspaces", "custom/wofi", "custom/firefox", "custom/terminal", "custom/slack", "custom/eww"],
+  "modules-right": [],
+  "modules-left": [],
+
+  // Modules configuration
+  "sway/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+    },
+    "format-icons": {
+      "1": "⎔",
+      "2": "⎔",
+      "3": "⎔",
+      "4": "⎔",
+      "5": "⎔",
+      "6": "⎔",
+      "7": "⎔",
+      "8": "⎔",
+      "9": "⎔",
+      "focused": " ",
+      "urgent": " ",
+      "default": " "
+    },
+    "icon-size": 12 
+  },
+  "sway/window": {
+    "format": "{}",
+    "all-outputs": true,
+    "max-length": 70,
+  },
+  "custom/media": {
+    "format": "{icon}{}",
+    "return-type": "json",
+    "format-icons": {
+      "Playing": " ",
+      "Paused": " ",
+    },
+    "max-length": 50,
+    "exec": "playerctl metadata --format '{\"text\": \"{{title}}\", \"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "mpc --host 127.0.0.1 --port 6002 toggle",
+    "on-scroll-down": "playerctl next",
+    "on-scroll-up": "playerctl previous"
+  },
+  "tray": {
+    "spacing": 20,
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "clock": {
+    // "timezone": "America/Denver",
+    "format": "{:%I:%M %p}",
+    // "format-alt": "{:%A, %B %d}",
+    "on-click": "eww open hub",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    // "format-alt": "{:%Y-%m-%d}"
+  },
+  "cpu": {
+    "format": "{usage}  ",
+    "on-click": "zsh htop",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "{}  "
+  },
+  "temperature": {
+    "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C {icon}",
+    "format": "{temperatureC}  {icon}",
+    "interval": 60,
+    "format-icons": ["", "", ""]
+  },
+  "backlight": {
+    "interval": 5,
+    "format": "{icon}",
+    "format-alt": "{percent}% {icon}",
+    "format-alt-click": "click-right",
+    "format-icons": ["🌕", "◔", "◑", "◕", "●"],
+    "on-scroll-down": "brightnessctl -c backlight set +5%",
+    "on-scroll-up": "brightnessctl -c backlight set 5%-"
+  },
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "battery#bat2": {
+    "bat": "BAT2"
+  },
+  "network": {
+    "interface": "wlan0", // (Optional) To force the use of this interface
+    "format-wifi": "直",
+    "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "interval": 60,
+    "on-click-middle": "exec zsh nmtui"
+  },
+  "pulseaudio": {
+    "scroll-step": 1, // %, can be a float
+    "format": "{icon}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["","  -","  --","  ---","  ----","  -----","  ------","  -------","  --------",]
+    },
+    "on-click": "pavucontrol",
+    "on-scroll-up": "pamixer -ui 2",
+    "on-scroll-down": "pamixer -ud 2",
+  },
+  "custom/weather": {
+    "exec": "~/.config/waybar/scripts/weather.sh Boise",
+    "format": "{}",
+    "return-type": "json",
+    "interval": 600
+  },
+  "custom/pacman": {
+    "format": "{}  ",
+    "interval": 3600, // every hour
+    // "restart-interval": 3600,
+    "exec": "checkupdates | wc -l", // # of updates
+    "exec-if": "exit 0", // always run; consider advanced run conditions
+    "on-click": "zsh yay; pkill -SIGRTMIN+8 waybar", // update system
+    "signal": 8,
+  },
+  "disk": {
+    "interval": 30,
+    "format": "{free}",
+    "path": "/run/media/chris/",
+  },
+  "custom/power": {
+    "format": "ﰪ",
+    "on-click": "eww open hub",
+    "tooltip": false
+  },
+  "custom/github": {
+    "format": "",
+    "on-click": "xdg-open https://github.com",
+    "tooltip": false
+  },
+  "custom/firefox": {
+    "format": "",
+    "on-click": "firefox",
+    "tooltip": false
+  },
+  "custom/slack": {
+    "format": "聆",
+    "on-click": "slack",
+    "tooltip": false
+  },
+  "custom/reddit": {
+    "format": "樓",
+    "on-click": "xdg-open https://www.reddit.com/",
+    "tooltip": false
+  },
+  "custom/arch": {
+    "format": "",
+    "on-click": "xdg-open https://archlinux.org/",
+    "tooltip": false
+  },
+  "custom/wofi": {
+	"format": "",
+	"on-click": "wofi",
+	"tooltip": false,
+  },
+  "custom/terminal": {
+    "format": "",
+	"on-click": "alacritty",
+	"tooltip": false,
+  },
+  "custom/youtube": {
+    "format": "輸",
+    "on-click": "xdg-open https://www.youtube.com/",
+    "tooltip": false
+  },
+  "custom/mail": {
+    "format": "",
+    "on-click": "xdg-open https://mailbox.org/",
+    "tooltip": false
+  },
+  "custom/eww": {
+	"format": "ﰪ",
+	"on-click": "exec eww open hub",
+	"tooltip": false
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "all-outputs": false,
+    // "format": "{app_id:2}",
+    "max-length": 10,
+    "icon-theme": "Papirus",
+    "icon-size": 15,
+    "on-click": "activate",
+    "markup": true,
+    "max-length": 7,
+    "on-click-right": "minimize",
+    "on-click-middle": "close"
+  }
+}

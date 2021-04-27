@@ -1,0 +1,32 @@
+/*
+*
+* Black custom
+* Author: Chris 
+*
+*/
+@define-color base11 #bdbec0; /*White-ish gray*/ 
+@define-color base10 #1e2228; /*Darker gray*/
+@define-color base00 #22272e; /*Dark gray*/
+@define-color base01 #2d333b;
+@define-color base02 #2d333b; /*Gray*/
+@define-color base03 #777777; /*Gray*/
+@define-color base04 #9da7b3; /*Light Gray*/
+@define-color base05 #9da7b3;
+@define-color base06 #9da7b3;
+
+@define-color color00 #4f9da6; /*Teal*/
+@define-color color01 #facf5a; /*Yellow*/
+@define-color color02 #ff5959; /*Red*/
+@define-color color03 #edf5f6; /*White-ish*/
+
+
+@define-color base07 #4fa8a8; /*Greenish-Blue*/
+@define-color base08 #72c2cf; /*Lighter greenish-blue*/
+@define-color base09 #6ab2c0; /*Lighter greenish-blue*/
+@define-color base0A #d8dee9; /*Very light gray-blue*/
+@define-color base0B #ff716a; /*Red*/
+@define-color base0C #f7c56e; /*Yellow*/
+@define-color base0D #dcbb8c; /*Tan*/
+@define-color base0E #98971A; /*Green*/
+@define-color base0F #b16286; /*Purple*/
+@define-color base0G #fe8019; /*Orange*/
