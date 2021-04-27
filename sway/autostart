@@ -1,10 +1,9 @@
 # Autostart
 #exec ~/.azotebg
 exec mako
-exec eww daemon
+#exec eww daemon
 exec autotiling
 exec nm-applet --indicator
-exec zsh "electron --enable-features=UseOzonePlatform --ozone-platform=wayland"
 # exec mpd ~/.config/mpd/mpd.conf
 # exec mpDris2
 # exec "syncthing -no-browser"
